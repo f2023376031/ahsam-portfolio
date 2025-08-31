@@ -3,91 +3,838 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahsam Karim - AI Developer</title>
+    <title>Ahsam Karim - AI Developer & Software Engineer</title>
+    <meta name="description" content="Portfolio of Ahsam Karim - BS Artificial Intelligence graduate skilled in Python, JavaScript, C++, and MySQL">
+    <meta name="author" content="Ahsam Karim">
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-align: center; padding: 2rem; }
-        .hero { padding: 4rem 0; }
-        h1 { font-size: 3rem; margin-bottom: 1rem; }
-        .subtitle { font-size: 1.5rem; margin-bottom: 2rem; }
-        .content { background: white; color: #333; padding: 2rem; border-radius: 15px; margin: 2rem 0; }
-        .project { background: #f8f9fa; padding: 1.5rem; margin: 1rem 0; border-radius: 10px; }
-        .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
-        .skill { background: #e9ecef; padding: 1rem; border-radius: 8px; }
-        .contact { background: #4f46e5; color: white; padding: 2rem; border-radius: 15px; margin-top: 2rem; }
-        a { color: white; text-decoration: none; padding: 0.5rem 1rem; background: rgba(255,255,255,0.2); border-radius: 20px; margin: 0.5rem; display: inline-block; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6; 
+            color: #00ff00;
+            overflow-x: hidden;
+            background: #000;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #000000 0%, #1a0000 25%, #001a00 50%, #000000 75%, #1a0000 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Neon Grid Background */
+        .neon-grid {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(0, 255, 0, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 0, 0.1) 1px, transparent 1px),
+                linear-gradient(rgba(255, 0, 0, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 0, 0, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px, 50px 50px, 100px 100px, 100px 100px;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        /* AI Animation Background */
+        .ai-background {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .ai-element {
+            position: absolute;
+            opacity: 0.6;
+            animation: float 4s ease-in-out infinite;
+            font-size: 2rem;
+            text-shadow: 0 0 10px currentColor;
+        }
+
+        .ai-element:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+            color: #00ff00;
+        }
+
+        .ai-element:nth-child(2) {
+            top: 30%;
+            right: 15%;
+            animation-delay: 1s;
+            color: #ff0000;
+        }
+
+        .ai-element:nth-child(3) {
+            bottom: 30%;
+            left: 20%;
+            animation-delay: 2s;
+            color: #00ff00;
+        }
+
+        .ai-element:nth-child(4) {
+            top: 60%;
+            right: 30%;
+            animation-delay: 3s;
+            color: #ff0000;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        /* Neural Network Lines */
+        .neural-lines {
+            position: absolute;
+            inset: 0;
+            opacity: 0.3;
+        }
+
+        .neural-line {
+            position: absolute;
+            height: 2px;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .neural-line:nth-child(1) {
+            top: 25%;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(90deg, transparent, #00ff00, transparent);
+            animation-delay: 0s;
+        }
+
+        .neural-line:nth-child(2) {
+            top: 60%;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(90deg, transparent, #ff0000, transparent);
+            animation-delay: 1.5s;
+        }
+
+        .neural-line:nth-child(3) {
+            top: 80%;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(90deg, transparent, #00ff00, transparent);
+            animation-delay: 3s;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.2; transform: scaleX(0.5); }
+            50% { opacity: 0.6; transform: scaleX(1); }
+        }
+
+        /* Hero Content */
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+            color: #00ff00;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #00ff00, #ff0000, #00ff00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: neonGlow 2s ease-in-out infinite alternate;
+            text-shadow: 0 0 20px #00ff00;
+        }
+
+        @keyframes neonGlow {
+            from { 
+                filter: drop-shadow(0 0 10px #00ff00) drop-shadow(0 0 20px #00ff00);
+                text-shadow: 0 0 20px #00ff00;
+            }
+            to { 
+                filter: drop-shadow(0 0 20px #ff0000) drop-shadow(0 0 30px #ff0000);
+                text-shadow: 0 0 30px #ff0000;
+            }
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1.2rem, 4vw, 1.8rem);
+            margin-bottom: 2rem;
+            color: #ff0000;
+            text-shadow: 0 0 10px #ff0000;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        .hero .bio {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            margin-bottom: 2rem;
+            color: #00ff00;
+            text-shadow: 0 0 5px #00ff00;
+            animation: fadeInUp 1s ease-out 1s both;
+            line-height: 1.8;
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 3rem;
+            animation: fadeInUp 1s ease-out 1.5s both;
+        }
+
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            background: #00ff00;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #00ff00;
+            animation: neonBlink 2s infinite;
+        }
+
+        @keyframes neonBlink {
+            0%, 100% { 
+                opacity: 1; 
+                transform: scale(1);
+                box-shadow: 0 0 10px #00ff00;
+            }
+            50% { 
+                opacity: 0.7; 
+                transform: scale(1.1);
+                box-shadow: 0 0 20px #ff0000;
+                background: #ff0000;
+            }
+        }
+
+        .status-text {
+            color: #00ff00;
+            text-shadow: 0 0 5px #00ff00;
+        }
+
+        /* See More Button */
+        .see-more-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: rgba(0, 255, 0, 0.1);
+            color: #00ff00;
+            text-decoration: none;
+            border-radius: 50px;
+            border: 2px solid #00ff00;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            animation: fadeInUp 1s ease-out 2s both;
+            text-shadow: 0 0 5px #00ff00;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+        }
+
+        .see-more-btn:hover {
+            background: rgba(255, 0, 0, 0.1);
+            border-color: #ff0000;
+            color: #ff0000;
+            text-shadow: 0 0 10px #ff0000;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .chevron {
+            transition: transform 0.3s ease;
+        }
+
+        .see-more-btn.active .chevron {
+            transform: rotate(180deg);
+        }
+
+        /* Expandable Content */
+        .expandable-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.8s ease-in-out;
+            background: #000;
+        }
+
+        .expandable-content.expanded {
+            max-height: 5000px;
+        }
+
+        .content-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #000;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #00ff00;
+            text-shadow: 0 0 15px #00ff00;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #ff0000;
+            text-shadow: 0 0 10px #ff0000;
+            margin-bottom: 3rem;
+        }
+
+        /* Education Section */
+        .education-section {
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid #ff0000;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .degree-title {
+            font-size: 1.8rem;
+            color: #00ff00;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 10px #00ff00;
+        }
+
+        .university {
+            color: #ff0000;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px #ff0000;
+            font-size: 1.1rem;
+        }
+
+        .graduation-status {
+            background: rgba(0, 255, 0, 0.2);
+            color: #00ff00;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+            border: 1px solid #00ff00;
+            text-shadow: 0 0 5px #00ff00;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-category {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid #00ff00;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.1);
+        }
+
+        .skill-category h3 {
+            color: #ff0000;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            text-shadow: 0 0 10px #ff0000;
+            text-align: center;
+        }
+
+        .skill-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(0, 255, 0, 0.2);
+        }
+
+        .skill-name {
+            font-weight: 500;
+            color: #00ff00;
+            text-shadow: 0 0 5px #00ff00;
+            font-size: 1.1rem;
+        }
+
+        .skill-level {
+            font-size: 0.9rem;
+            color: #ffffff;
+            opacity: 0.8;
+        }
+
+        .skill-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            margin-top: 0.5rem;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #00ff00, #ff0000);
+            border-radius: 4px;
+            transition: width 1s ease-in-out;
+            width: 0;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+        }
+
+        /* Languages Section */
+        .languages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .language-card {
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid #ff0000;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .language-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.3);
+            border-color: #00ff00;
+        }
+
+        .language-name {
+            font-size: 1.3rem;
+            color: #00ff00;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 10px #00ff00;
+        }
+
+        .language-level {
+            color: #ff0000;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 5px #ff0000;
+        }
+
+        .language-description {
+            color: #ffffff;
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: rgba(0, 0, 0, 0.9);
+            color: #00ff00;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-top: 2rem;
+            border-top: 2px solid #00ff00;
+        }
+
+        .contact-section h2 {
+            text-shadow: 0 0 15px #00ff00;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+            margin: 2rem auto 0;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: rgba(0, 255, 0, 0.1);
+            border-radius: 15px;
+            text-decoration: none;
+            color: #00ff00;
+            border: 1px solid rgba(0, 255, 0, 0.3);
+            transition: all 0.3s ease;
+            text-shadow: 0 0 5px #00ff00;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 0, 0, 0.1);
+            border-color: #ff0000;
+            color: #ff0000;
+            text-shadow: 0 0 10px #ff0000;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .contact-icon {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .skills-grid,
+            .languages-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero {
+                padding: 1rem;
+            }
+            
+            .content-section {
+                padding: 2rem 1rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="hero">
-        <h1>Ahsam Karim</h1>
-        <div class="subtitle">AI Developer & Software Engineer</div>
-        <p>4 years of experience in AI, machine learning, and full-stack development</p>
-    </div>
-
-    <div class="content">
-        <h2>Featured Projects</h2>
+    <!-- Hero Section -->
+    <section class="hero">
+        <!-- Neon Grid Background -->
+        <div class="neon-grid"></div>
         
-        <div class="project">
-            <h3>AI-Powered Chatbot System</h3>
-            <p>Intelligent conversational AI with natural language understanding</p>
-            <p><strong>Tech:</strong> Python, TensorFlow, NLTK, Flask</p>
-        </div>
-
-        <div class="project">
-            <h3>Computer Vision Object Detection</h3>
-            <p>Real-time object detection for autonomous vehicles (95% accuracy)</p>
-            <p><strong>Tech:</strong> Python, PyTorch, OpenCV, CUDA</p>
-        </div>
-
-        <div class="project">
-            <h3>Full-Stack E-commerce Platform</h3>
-            <p>Modern e-commerce with AI-powered recommendations</p>
-            <p><strong>Tech:</strong> React, Node.js, MongoDB, Stripe</p>
-        </div>
-
-        <h2>Technical Skills</h2>
-        <div class="skills">
-            <div class="skill">
-                <h4>Programming</h4>
-                <p>Python, C++, JavaScript, TypeScript, SQL</p>
-            </div>
-            <div class="skill">
-                <h4>AI & ML</h4>
-                <p>TensorFlow, PyTorch, Computer Vision, NLP</p>
-            </div>
-            <div class="skill">
-                <h4>Web Dev</h4>
-                <p>React, Node.js, Express, MongoDB</p>
-            </div>
-            <div class="skill">
-                <h4>Tools</h4>
-                <p>Git, Docker, AWS, Linux</p>
+        <!-- AI Animation Background -->
+        <div class="ai-background">
+            <div class="ai-element">🧠</div>
+            <div class="ai-element">💻</div>
+            <div class="ai-element">✨</div>
+            <div class="ai-element">🤖</div>
+            
+            <div class="neural-lines">
+                <div class="neural-line"></div>
+                <div class="neural-line"></div>
+                <div class="neural-line"></div>
             </div>
         </div>
 
-        <h2>Experience</h2>
-        <div class="project">
-            <h3>Bachelor's in AI (2020-2024)</h3>
-            <p>Graduated with honors, specialized in ML and deep learning</p>
+        <!-- Hero Content -->
+        <div class="hero-content">
+            <h1>Ahsam Karim</h1>
+            <div class="subtitle">AI Developer & Software Engineer</div>
+            <p class="bio">
+                Hi, I'm a BS Artificial Intelligence graduate with skills in Python, JavaScript, C++, and MySQL. 
+                I enjoy building intelligent systems, solving problems with data, and developing efficient applications. 
+                I'm eager to apply my knowledge in real-world projects and grow as an AI-driven developer.
+                <br><br>
+                I have a strong interest in machine learning, data analytics, and software development, and I am always 
+                excited to learn new technologies. My goal is to contribute to impactful projects that combine AI with practical solutions.
+            </p>
+            
+            <div class="status-indicator">
+                <div class="status-dot"></div>
+                <span class="status-text">Fresh Graduate • BS in AI • Ready to Learn & Contribute</span>
+            </div>
+
+            <button class="see-more-btn" onclick="toggleContent()">
+                <span id="btn-text">See More</span>
+                <span class="chevron">▼</span>
+            </button>
         </div>
-        <div class="project">
-            <h3>AI Developer Intern (2023)</h3>
-            <p>Improved model accuracy by 15%, reduced inference time by 40%</p>
+    </section>
+
+    <!-- Expandable Content -->
+    <div class="expandable-content" id="expandable-content">
+        <div class="content-section">
+            
+            <!-- Education Level -->
+            <section class="section">
+                <h2>Education Level</h2>
+                <p class="section-subtitle">My academic background and qualifications</p>
+                
+                <div class="education-section">
+                    <div class="degree-title">Bachelor of Science in Artificial Intelligence</div>
+                    <div class="university">University Graduate</div>
+                    <div class="graduation-status">Recent Graduate - 2024</div>
+                    <p style="color: #ffffff; opacity: 0.9; margin-top: 1rem; font-size: 1.1rem;">
+                        Comprehensive study of AI fundamentals including machine learning algorithms, deep learning, 
+                        neural networks, computer vision, natural language processing, and data structures. 
+                        Strong foundation in mathematics, statistics, and programming with hands-on experience 
+                        in various AI projects and research.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Skills -->
+            <section class="section">
+                <h2>Skills</h2>
+                <p class="section-subtitle">Technical skills and competencies</p>
+                
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Programming Skills</h3>
+                        <div class="skill-item">
+                            <span class="skill-name">Python</span>
+                            <span class="skill-level">Advanced</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-progress" data-width="90%"></div></div>
+                        
+                        <div class="skill-item">
+                            <span class="skill-name">JavaScript</span>
+                            <span class="skill-level">Intermediate</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-progress" data-width="75%"></div></div>
+                        
+                        <div class="skill-item">
+                            <span class="skill-name">C++</span>
+                            <span class="skill-level">Intermediate</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-progress" data-width="70%"></div></div>
+                        
+                        <div class="skill-item">
+                            <span class="skill-name">MySQL</span>
+                            <span class="skill-level">Intermediate</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-progress" data-width="75%"></div></div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>AI & Machine Learning</h3>
+                        <div class="skill-item">
+                            <span class="skill-name">Machine Learning</span>
+                            <span class="skill-level">Advanced</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-progress" data-width="85%"></div></div>
+                        
+                        <div class="skill-item">
+                            <span class="skill-name">Deep Learning</span>
+                            <span class="skill-level">Good</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-progress" data-width="80%"></div></div>
+                        
+                        <div class="skill-item">
+                            <span class="skill-name">Data Analytics</span>
+                            <span class="skill-level">Good</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-progress" data-width="75%"></div></div>
+                        
+                        <div class="skill-item">
+                            <span class="skill-name">Neural Networks</span>
+                            <span class="skill-level">Good</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-progress" data-width="80%"></div></div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Core Competencies</h3>
+                        <div class="skill-item">
+                            <span class="skill-name">Problem Solving</span>
+                            <span class="skill-level">Excellent</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-progress" data-width="95%"></div></div>
+                        
+                        <div class="skill-item">
+                            <span class="skill-name">Analytical Thinking</span>
+                            <span class="skill-level">Excellent</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-progress" data-width="90%"></div></div>
+                        
+                        <div class="skill-item">
+                            <span class="skill-name">Quick Learning</span>
+                            <span class="skill-level">Excellent</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-progress" data-width="95%"></div></div>
+                        
+                        <div class="skill-item">
+                            <span class="skill-name">Team Collaboration</span>
+                            <span class="skill-level">Good</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-progress" data-width="80%"></div></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Languages -->
+            <section class="section">
+                <h2>Languages</h2>
+                <p class="section-subtitle">Communication languages I speak</p>
+                
+                <div class="languages-grid">
+                    <div class="language-card">
+                        <div class="language-name">English</div>
+                        <div class="language-level">Fluent</div>
+                        <p class="language-description">
+                            Professional working proficiency in speaking, reading, and writing. 
+                            Comfortable with technical documentation and communication.
+                        </p>
+                    </div>
+
+                    <div class="language-card">
+                        <div class="language-name">Urdu</div>
+                        <div class="language-level">Native</div>
+                        <p class="language-description">
+                            Native speaker with full proficiency in all aspects of the language. 
+                            Primary language for daily communication.
+                        </p>
+                    </div>
+
+                    <div class="language-card">
+                        <div class="language-name">Hindi</div>
+                        <div class="language-level">Conversational</div>
+                        <p class="language-description">
+                            Good understanding and speaking ability. 
+                            Can communicate effectively in most situations.
+                        </p>
+                    </div>
+                </div>
+            </section>
         </div>
-        <div class="project">
-            <h3>Freelance Developer (2022-Present)</h3>
-            <p>20+ successful projects, 5-star client rating</p>
-        </div>
+
+        <!-- Contact Section -->
+        <section class="contact-section">
+            <h2>Let's Connect</h2>
+            <p style="color: #ff0000; text-shadow: 0 0 10px #ff0000;">Ready to start my career in AI and software development</p>
+            
+            <div class="contact-grid">
+                <a href="mailto:ahsam.karim@example.com" class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <div>
+                        <div>Email</div>
+                        <div style="font-size: 0.9rem; opacity: 0.8;">ahsam.karim@example.com</div>
+                    </div>
+                </a>
+                
+                <a href="https://github.com/f2023376031" class="contact-item" target="_blank">
+                    <div class="contact-icon">📁</div>
+                    <div>
+                        <div>GitHub</div>
+                        <div style="font-size: 0.9rem; opacity: 0.8;">f2023376031</div>
+                    </div>
+                </a>
+                
+                <a href="https://linkedin.com/in/ahsamkarim" class="contact-item" target="_blank">
+                    <div class="contact-icon">💼</div>
+                    <div>
+                        <div>LinkedIn</div>
+                        <div style="font-size: 0.9rem; opacity: 0.8;">Ahsam Karim</div>
+                    </div>
+                </a>
+                
+                <a href="tel:+15551234567" class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div>
+                        <div>Phone</div>
+                        <div style="font-size: 0.9rem; opacity: 0.8;">Available upon request</div>
+                    </div>
+                </a>
+            </div>
+        </section>
     </div>
 
-    <div class="contact">
-        <h2>Let's Connect</h2>
-        <p>Ready to collaborate on AI projects</p>
-        <div>
-            <a href="mailto:ahsam.karim@example.com">Email</a>
-            <a href="https://github.com/f2023376031">GitHub</a>
-            <a href="https://linkedin.com/in/ahsamkarim">LinkedIn</a>
-        </div>
-    </div>
+    <script>
+        let isExpanded = false;
+
+        function toggleContent() {
+            const content = document.getElementById('expandable-content');
+            const btn = document.querySelector('.see-more-btn');
+            const btnText = document.getElementById('btn-text');
+            
+            isExpanded = !isExpanded;
+            
+            if (isExpanded) {
+                content.classList.add('expanded');
+                btn.classList.add('active');
+                btnText.textContent = 'Show Less';
+                
+                // Animate sections into view
+                setTimeout(() => {
+                    const sections = document.querySelectorAll('.section');
+                    sections.forEach((section, index) => {
+                        setTimeout(() => {
+                            section.classList.add('visible');
+                        }, index * 300);
+                    });
+                    
+                    // Animate skill bars
+                    setTimeout(() => {
+                        const skillBars = document.querySelectorAll('.skill-progress');
+                        skillBars.forEach((bar, index) => {
+                            setTimeout(() => {
+                                const width = bar.getAttribute('data-width');
+                                bar.style.width = width;
+                            }, index * 100);
+                        });
+                    }, 1000);
+                }, 300);
+                
+            } else {
+                content.classList.remove('expanded');
+                btn.classList.remove('active');
+                btnText.textContent = 'See More';
+                
+                // Reset sections
+                const sections = document.querySelectorAll('.section');
+                sections.forEach(section => {
+                    section.classList.remove('visible');
+                });
+                
+                // Reset skill bars
+                const skillBars = document.querySelectorAll('.skill-progress');
+                skillBars.forEach(bar => {
+                    bar.style.width = '0';
+                });
+                
+                // Scroll back to top
+                document.querySelector('.hero').scrollIntoView({ 
+                    behavior: 'smooth' 
+                });
+            }
+        }
+
+        // Initialize animations on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add any initialization code here
+        });
+    </script>
 </body>
 </html>
